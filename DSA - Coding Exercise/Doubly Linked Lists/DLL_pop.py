@@ -41,21 +41,18 @@ class DoublyLinkedList:
 
         if self.head is None:           # for empty DLL
             return None
-        elif self.head.next is None:    # For single node DLL
-            temp = self.head
+        
+        temp = self.tail
+        if self.head.next is None:    # For single node DLL
             self.head = None            # removing head and tail
             self.tail = None
-            self.length -= 1            # decreasing length
-
-            return temp                 # returning node
+        else:
+            self.tail = self.tail.prev      # changing tail to prev's node
+            self.tail.next = None           # changing current tail's next to none
+            temp.prev = None                # detaching last node's prev
+        self.length -= 1            # decreasing length
+        return temp                 # returning node
         
-        temp = self.tail                # setting a var at tail
-        self.tail = self.tail.prev      # changing tail to prev's node
-        self.tail.next = None           # changing current tail's next to none
-        temp.prev = None                # detaching last node's prev
-        self.length -= 1
-
-        return temp                     # returning var
 
 my_dll = DoublyLinkedList(7)
 my_dll.append(8)

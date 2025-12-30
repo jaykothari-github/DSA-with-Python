@@ -98,12 +98,11 @@ class DoublyLinkedList:
             var = self.head                             # starting from Head
             for i in range(index):
                 var = var.next
-            return var
         else:                                           # if index is in second half
             var = self.tail                             # starting from tail
             for i in range(self.length - index -1):     # length - index move to reach
                 var = var.prev
-            return var
+        return var
 
 
 

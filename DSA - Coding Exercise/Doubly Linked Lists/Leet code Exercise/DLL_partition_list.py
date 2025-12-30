@@ -40,35 +40,34 @@ class DoublyLinkedList:
         
     def partition_list(self, x):
 
-        cur = self.head
-        gl = DoublyLinkedList(0)
-        ll = DoublyLinkedList(0)
-
-        while cur:
-            if cur.value >= x:
-                gl.append(cur.value)
+        if not self.head:
+            return None
+    
+        dummy1 = Node(0)
+        dummy2 = Node(0)
+        prev1 = dummy1
+        prev2 = dummy2
+        current = self.head
+    
+        while current:
+            if current.value < x:
+                prev1.next = current
+                current.prev = prev1
+                prev1 = current
+                
             else:
-                ll.append(cur.value)
-            
-            cur = cur.next
-
-        # ll.print_list()
-        # gl.print_list()
-
-        if ll.head.next and gl.head.next:
-
-            run = ll.head
-            while run.next:
-                run = run.next
-
-            run.next = gl.head.next
-            gl.head.next.prev = run
-            gl.head.next = None
-
-            self.head = ll.head.next
-            # self.tail = gl.tail
-
-        return True
+                prev2.next = current
+                current.prev = prev2
+                prev2 = current
+            current = current.next
+        
+        prev1.next = dummy2.next
+        if dummy2.next:
+            dummy2.next.prev = prev1
+        prev2.next = None
+        
+        self.head = dummy1.next
+        self.head.prev = None
 
 
         #   +===================================================+

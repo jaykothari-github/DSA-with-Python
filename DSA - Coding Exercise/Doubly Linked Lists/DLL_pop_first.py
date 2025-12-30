@@ -80,13 +80,12 @@ class DoublyLinkedList:
         if self.head.next is None:      # for single node DLL
             self.head = None
             self.tail = None
-            self.length -= 1
-            return var
-        self.head = self.head.next      # changing head to head's next
-        var.next = None                 # setting var's next to None
-        self.head.prev = None           # changing current head's prev to None
+        else:    
+            self.head = self.head.next      # changing head to head's next
+            var.next = None                 # setting var's next to None
+            self.head.prev = None           # changing current head's prev to None
+        
         self.length -= 1
-
         return var
 
 
@@ -113,4 +112,4 @@ print("tail > ",my_dll.tail.value)
 print("Length > ",my_dll.length)
 my_dll.print_dll()
 
-print(my_dll.get(6).value)
+# print(my_dll.get(6).value)
