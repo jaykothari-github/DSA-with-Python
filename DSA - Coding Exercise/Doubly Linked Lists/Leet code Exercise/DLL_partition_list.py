@@ -16,6 +16,7 @@ class DoublyLinkedList:
         current_node = self.head
         while current_node is not None:
             output.append(str(current_node.value))
+            # print(current_node.value)
             current_node = current_node.next
         print(" <-> ".join(output))
         
@@ -42,32 +43,59 @@ class DoublyLinkedList:
 
         if not self.head:
             return None
-    
-        dummy1 = Node(0)
-        dummy2 = Node(0)
-        prev1 = dummy1
-        prev2 = dummy2
-        current = self.head
-    
-        while current:
-            if current.value < x:
-                prev1.next = current
-                current.prev = prev1
-                prev1 = current
-                
-            else:
-                prev2.next = current
-                current.prev = prev2
-                prev2 = current
-            current = current.next
         
-        prev1.next = dummy2.next
-        if dummy2.next:
-            dummy2.next.prev = prev1
-        prev2.next = None
-        
-        self.head = dummy1.next
+        node1 = Node(0)             # creating two dummy nodes
+        node2 = Node(0)
+        p1 = node1                  # creating pointers on dummy node
+        p2 = node2
+        run = self.head
+
+        while run:                  # if value is bigger then will add in node 2
+            if run.value >= x:
+                p2.next = run
+                run.prev = p2
+                p2 = run
+            else:                   # if not then add it in node 1
+                p1.next = run
+                run.prev = p1
+                p1 = run
+
+            run = run.next
+
+        p1.next = node2.next        # connect node1 and node2
+        if node2.next:
+            node2.next.prev = p1
+
+        p2.next = None              # set next and prev points to None
+        self.head = node1.next      # set the head point
         self.head.prev = None
+
+    
+        # dummy1 = Node(0)
+        # dummy2 = Node(0)
+        # prev1 = dummy1
+        # prev2 = dummy2
+        # current = self.head
+    
+        # while current:
+        #     if current.value < x:
+        #         prev1.next = current
+        #         current.prev = prev1
+        #         prev1 = current
+                
+        #     else:
+        #         prev2.next = current
+        #         current.prev = prev2
+        #         prev2 = current
+        #     current = current.next
+        
+        # prev1.next = dummy2.next
+        # if dummy2.next:
+        #     dummy2.next.prev = prev1
+        # prev2.next = None
+        
+        # self.head = dummy1.next
+        # self.head.prev = None
 
 
         #   +===================================================+
