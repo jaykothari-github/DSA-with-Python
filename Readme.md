@@ -36,7 +36,7 @@ I am building this repo layer by layer. Here is the current status of the curric
  ┣ 📂 DSA - Python
  ┃ ┗ 📜 All Topics Notes
  ┣ 📂 DSA - Coding Exercise
- ┃   📂 DSA - Coding Exercise 
+ ┃   📂 DSA - Topics 
  ┃    ┣ 📂 Leetcode Exercise
  ┃    ┗ 📜 Operations Python files
  ┗ 📜 README.md
